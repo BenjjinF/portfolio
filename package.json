@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio site",
+  "author": "Benjamin Frost",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "nuxt": "^1.0.0",
+    "vue-mq": "^0.2.1"
+  },
+  "devDependencies": {
+    "ajv": "^6.5.0",
+    "babel-polyfill": "^6.26.0",
+    "coffeescript": "^2.3.1",
+    "cross-env": "^5.0.1",
+    "hamburgers": "^0.9.3",
+    "node-sass": "^4.9.0",
+    "normalize-scss": "^7.0.1",
+    "sass-loader": "^7.0.1"
+  }
+}
