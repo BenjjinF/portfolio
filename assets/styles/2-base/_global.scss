@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+hr {
+  border-color: $grey;
+  border-top: 5px solid $grey;
+  margin: $spacing 0;
+
+  &.hidden {
+    margin: $spacing 0;
+    opacity: 0;
+  }
+}

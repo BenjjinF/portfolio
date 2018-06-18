@@ -1,15 +1,11 @@
 <template>
   <div class="page page-home">
-    <whatIDo></whatIDo>
     <whatIveDone :projects="projects"></whatIveDone>
-    <whatIKnow></whatIKnow>
   </div>
 </template>
 
 <script>
-  import whatIDo from '~/components/home/whatIDo.vue'
   import whatIveDone from '~/components/home/whatIveDone/whatIveDone.vue'
-  import whatIKnow from '~/components/home/whatIKnow/whatIKnow.vue'
 
   export default {
     asyncData(context) {
@@ -38,12 +34,7 @@
       })
     },
     components: {
-      whatIDo,
-      whatIveDone,
-      whatIKnow
+      whatIveDone
     }
   }
 </script>
-
-<style lang="scss">
-</style>

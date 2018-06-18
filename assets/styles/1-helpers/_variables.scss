@@ -1,0 +1,94 @@
+// *****************
+// Colours
+// *****************
+
+// Coolors Exported Palette - coolors.co/cfe8ef-c6dbf0-9fa2b2-4f7cac-1c3144
+
+// HSL
+// $azureish-white: hsla(193%, 50%, 87%, 1);
+$columbia-blue: hsla(210%, 58%, 86%, 1);
+$cyan-azure: hsla(211%, 37%, 49%, 1);
+$yankees-blue: hsla(209%, 42%, 19%, 1);
+
+// RGB
+// $azureish-white: rgba(207, 232, 239, 1);
+$columbia-blue: rgba(198, 219, 240, 1);
+$cyan-azure: rgba(79, 124, 172, 1);
+$yankees-blue: rgba(28, 49, 68, 1);
+
+// HEX
+// $azureish-white: #cfe8ef;
+$columbia-blue: #c6dbf0;
+$cyan-azure: #4f7cac;
+$yankees-blue: #1c3144;
+$grey: #9fa2b2;
+$white: #fff;
+$red: #DA405B;
+
+$primary-light: $columbia-blue;
+$primary-bright: $cyan-azure;
+$primary-dark: $yankees-blue;
+
+$blue-grey-50: #eceff1;
+$blue-grey-100: #cfd8dc;
+$blue-grey-200: #b0bec5;
+$blue-grey-300: #90a4ae;
+$blue-grey-400: #78909c;
+$blue-grey-500: #607d8b;
+$blue-grey-600: #546e7a;
+$blue-grey-700: #455a64;
+$blue-grey-800: #37474f;
+$blue-grey-900: #263238;
+
+
+// *****************
+// Layout
+// *****************
+
+$spacing: 1rem;
+
+$header-padding-sm-y: $spacing * 1.25;
+$header-padding-sm-x: $spacing * 2;
+$header-padding-sm: $header-padding-sm-y $header-padding-sm-x;
+$header-padding-md-y: $spacing * 2;
+$header-padding-md-x: $spacing * 2;
+$header-padding-md: $header-padding-md-y $header-padding-md-x;
+$header-padding-lg-y: $spacing * 4;
+$header-padding-lg-x: $spacing * 4;
+$header-padding-lg: $header-padding-lg-y $header-padding-lg-x;
+
+$header-font-size-sm: 2rem;
+$header-font-size-md: 2.25rem;
+$header-font-size-lg: 2.75rem;
+
+$header-logo-height-sm: $header-font-size-sm;
+$header-logo-width-md: 3rem;
+$header-logo-width-lg: 13rem;
+
+$header-height-sm: $header-padding-sm-y * 2 + $header-logo-height-sm;
+$header-width-md: $header-padding-md-x * 2 + $header-logo-width-md;
+$header-width-lg: $header-padding-lg-x * 2 + $header-logo-width-lg;
+
+$main-padding-sm-y: $spacing * 2;
+$main-padding-sm-x: $spacing * 2;
+$main-padding-sm: $main-padding-sm-y $main-padding-sm-x;
+$main-padding-md-y: $spacing * 2;
+$main-padding-md-x: $spacing * 3;
+$main-padding-md: $main-padding-md-y $main-padding-md-x;
+$main-padding-lg-y: $spacing * 4;
+$main-padding-lg-x: $spacing * 4;
+$main-padding-lg: $main-padding-lg-y $main-padding-lg-x;
+
+
+// *****************
+// Borders
+// *****************
+
+$default-border-radius: .25rem;
+$default-border-width: 5px;
+
+// *****************
+// Transitions
+// *****************
+
+$transition-duration: .75s;

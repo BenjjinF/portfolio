@@ -1,0 +1,22 @@
+a.button, button.button {
+  background-color: $primary-dark;
+  border-radius: $default-border-radius;
+  border: 2px solid $primary-dark;
+  color: $primary-light;
+  cursor: pointer;
+  display: block;
+  font-size: 1.25em;
+  padding: $spacing * .75;
+  text-align: center;
+  text-decoration: none;
+  transition: $transition-duration;
+  width: 100%;
+  &:hover {
+    background-color: $primary-bright;
+    border: 2px solid $primary-bright;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2pt $primary-bright;
+    outline: 0;
+  }
+}
