@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="wrapper">
+  <div class="wrapper" v-if="!internetExplorer">
     <TheHeader></TheHeader>
     <Back></Back>
     <main>
@@ -7,18 +7,39 @@
       <TheFooter/>
     </main>
   </div>
+  <internetExplorer v-else>
+  </internetExplorer>
 </template>
 
 <script>
 import TheHeader from '~/components/TheHeader/TheHeader.vue'
 import TheFooter from '~/components/TheFooter/TheFooter.vue'
 import Back from '~/components/nav/back.vue'
+import internetExplorer from '~/components/home/internetExplorer.vue'
 export default {
+  data() {
+    return {
+      internetExplorer: false
+    }
+  },
   methods: {
     handleScroll () {
       if (process.browser) {
         this.$store.state.scroll = window.scrollY;;
       }
+    },
+    detectIE () {
+      let userAgent = window.navigator.userAgent
+      let IEbelowten = userAgent.indexOf("MSIE")
+      let IEeleven = navigator.userAgent.match(/Trident.*rv\:11\./)
+      if (IEbelowten > 0 || !!IEeleven) {
+        this.internetExplorer = true
+      }
+    }
+  },
+  created() {
+    if (process.browser) {
+      this.detectIE()
     }
   },
   mounted () {
@@ -34,7 +55,8 @@ export default {
   components: {
     Back,
     TheHeader,
-    TheFooter
+    TheFooter,
+    internetExplorer
   }
 }
 </script>

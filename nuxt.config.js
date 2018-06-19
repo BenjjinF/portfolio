@@ -1,7 +1,6 @@
 const pkg = require('./package')
 const axios = require('axios')
-require('dotenv').config()
-
+const apiKeys = require('./apiKeys.js')
 module.exports = {
   mode: 'universal',
   /*
@@ -53,7 +52,11 @@ module.exports = {
     {
       src: '~plugins/nav',
       ssr: false
-    }
+    },
+    // {
+    //   src: '~plugins/beforeUnload',
+    //   ssr: false
+    // }
   ],
   /*
   ** Nuxt.js modules
@@ -62,7 +65,7 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     ['storyblok-nuxt', {
-      accessToken: process.env.NODE_ENV == 'production' ? process.env.storyblokProductionKey : process.env.storyblokDevelopmentKey,
+      accessToken: process.env.NODE_ENV == 'production' ? apiKeys.storyblokProductionKey : apiKeys.storyblokDevelopmentKey,
       cacheProvider: 'memory'}
     ],
     ['@nuxtjs/google-analytics', {
@@ -74,7 +77,7 @@ module.exports = {
   generate: {
     routes: function () {
       return axios.get(
-        "https://api.storyblok.com/v1/cdn/stories?version=published&token=" + process.env.storyblokProductionKey + "&starts_with=projects&cv=" +
+        "https://api.storyblok.com/v1/cdn/stories?version=published&token=" + apiKeys.storyblokProductionKey + "&starts_with=projects&cv=" +
           Math.floor(Date.now() / 1e3)
       )
       .then(res => {
