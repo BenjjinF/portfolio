@@ -1,49 +1,30 @@
-<template lang="html">
-  <div class="wrapper" v-if="!internetExplorer">
+<template lang="html" >
+  <div class="wrapper" v-else>
     <TheHeader></TheHeader>
     <Back></Back>
-    <main>
+    <div class="main">
       <nuxt/>
       <TheFooter/>
-    </main>
+    </div>
   </div>
-  <internetExplorer v-else>
-  </internetExplorer>
 </template>
 
 <script>
 import TheHeader from '~/components/TheHeader/TheHeader.vue'
 import TheFooter from '~/components/TheFooter/TheFooter.vue'
 import Back from '~/components/nav/back.vue'
-import internetExplorer from '~/components/home/internetExplorer.vue'
+
 export default {
-  data() {
-    return {
-      internetExplorer: false
-    }
-  },
   methods: {
     handleScroll () {
       if (process.browser) {
-        this.$store.state.scroll = window.scrollY;;
+        this.$store.state.scroll = window.scrollY;
       }
     },
-    detectIE () {
-      let userAgent = window.navigator.userAgent
-      let IEbelowten = userAgent.indexOf("MSIE")
-      let IEeleven = navigator.userAgent.match(/Trident.*rv\:11\./)
-      if (IEbelowten > 0 || !!IEeleven) {
-        this.internetExplorer = true
-      }
-    }
-  },
-  created() {
-    if (process.browser) {
-      this.detectIE()
-    }
   },
   mounted () {
     if (process.browser) {
+
       window.addEventListener('scroll', this.handleScroll)
     }
   },
@@ -56,7 +37,6 @@ export default {
     Back,
     TheHeader,
     TheFooter,
-    internetExplorer
   }
 }
 </script>
@@ -64,54 +44,57 @@ export default {
 <style lang="scss">
 
 .wrapper {
-  main {
-    // width: 100%;
+  width: 100%;
+  .main {
+    width: 100%;
     max-width: 1200px;
     margin-top: $header-height-sm;
     padding: $main-padding-sm;
     section {
       &:not(:last-child) {
-        margin-bottom: $spacing * 3;
+        margin-bottom: $main-padding-sm-y;
       }
       h1 {
-        margin-bottom: $spacing * 3;
+        margin-bottom: $main-padding-sm-y;
       }
       .spacer {
-        height: $spacing * 3;
+        height: $main-padding-sm-y;
       }
     }
   }
   @include media(">md") {
-    main {
+    .main {
       margin-top: 0;
       padding: $main-padding-md;
       padding-left: $main-padding-md-x + $header-width-md;
       section {
         &:not(:last-child) {
-          margin-bottom: $spacing * 4;
+          margin-bottom: $main-padding-md-y;
         }
         h1 {
-          margin-bottom: $spacing * 4;
+          margin-bottom: $main-padding-md-y;
           width: 100%;
         }
       }
     }
   }
   @include media(">lg") {
-    main {
+    .main {
       padding: $main-padding-lg;
       padding-left: $main-padding-lg-x + $header-width-lg;
       section {
         h1 {
-          margin-bottom: $spacing * 5;
+          margin-bottom: $main-padding-lg-y - $spacing;
         }
         &:not(:last-child) {
-          margin-bottom: $spacing * 5;
+          margin-bottom: $main-padding-lg-y;
         }
       }
     }
   }
-  footer {
+  .footer {
+    width: 100%;
+    max-width: 1200px;
     margin-top: $header-padding-sm-y;
     @include media(">md") {
       margin-top: $header-padding-md-y;

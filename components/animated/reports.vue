@@ -1,13 +1,9 @@
 <template lang="html">
 	<div class="reports" @mouseover="animate">
 		<div class="anchor">
-			<div class="chart active" :class="{'bounce': bounce}">
-				<div class="triangle one">
-
-				</div>
-				<div class="triangle two">
-
-				</div>
+			<div class="chart" :class="{'bounce': bounce}">
+				<div class="triangle one"></div>
+				<div class="triangle two"></div>
 			</div>
 		</div>
 	</div>
@@ -39,6 +35,7 @@ export default {
 
 <style scoped lang="scss">
 
+$spuedo-margin: .6em;
 
 .reports {
 	width: 100%;
@@ -49,20 +46,49 @@ export default {
 		top: 0%;
 		width: 100%;
 		height: 100%;
-		display: flex;
-		align-items: flex-end;
 		pointer-events: none;
 		overflow: hidden;
-
 		.chart {
 			width: 100%;
 			height: 100%;
-			border-left: .5rem solid $primary-dark;
-			border-bottom: .5rem solid $primary-dark;
-			padding: .5rem;
-			display: flex;
-			align-items: flex-end;
-			box-sizing: border-box;
+			border-left: $spuedo-margin solid $primary-dark;
+			border-bottom: $spuedo-margin solid $primary-dark;
+			.triangle {
+				height: 0;
+				width: 100%;
+				position: absolute;
+				left: $spuedo-margin * 2;
+				bottom: $spuedo-margin * 2;
+				overflow: hidden;
+				&:after {
+					content: "";
+					display: block;
+					width: 0;
+					height: 0;
+				}
+			}
+			.triangle.one {
+		    padding-left: 40%;
+				padding-bottom: 55%;
+				transition: 3s;
+				&:after {
+			    margin-left:-550px;
+			    border-left: 500px solid transparent;
+			    border-right: 600px solid transparent;
+			    border-bottom: 500px solid $grey;
+				}
+			}
+			.triangle.two {
+		    padding-left: 50%;
+				padding-bottom: 75%;
+				transition: 2s;
+				&:after {
+					margin-left:-450px;
+					border-left: 500px solid transparent;
+					border-right: 500px solid transparent;
+					border-bottom: 500px solid $primary-light;
+				}
+			}
 
 			@keyframes bounceOne {
 				25% {
@@ -87,33 +113,6 @@ export default {
 				}
 			}
 
-			.triangle.one {
-			    width: 100%;
-			    height: 0;
-			    padding-left: 40%;
-			    padding-bottom: 0%;
-			    overflow: hidden;
-				position: absolute;
-				transition: 3s;
-
-			}
-			.triangle.two {
-			    width: 100%;
-			    height: 0;
-			    padding-left: 40%;
-			    padding-bottom: 0%;
-			    overflow: hidden;
-				position: absolute;
-				transition: 2s;
-			}
-			&.active {
-				.triangle.one {
-					padding-bottom: 55%;
-				}
-				.triangle.two {
-					padding-bottom: 75%;
-				}
-			}
 			&.bounce {
 				.triangle.one {
 					animation: bounceOne 3s;
@@ -121,28 +120,6 @@ export default {
 				.triangle.two {
 					animation: bounceTwo 3s;
 				}
-			}
-			.triangle.one {
-				&:after {
-			    content: "";
-			    display: block;
-			    width: 0;
-			    height: 0;
-			    margin-left:-550px;
-			    border-left: 500px solid transparent;
-			    border-right: 600px solid transparent;
-			    border-bottom: 500px solid $grey;
-				}
-			}
-			.triangle.two:after {
-				content: "";
-				display: block;
-				width: 0;
-				height: 0;
-				margin-left:-450px;
-				border-left: 500px solid transparent;
-				border-right: 500px solid transparent;
-				border-bottom: 500px solid $primary-light;
 			}
 		}
 	}

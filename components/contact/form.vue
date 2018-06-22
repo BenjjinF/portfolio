@@ -2,9 +2,12 @@
   <form id="contact-form" class="col-span">
     <input :class="{error: contactErrors.name}" type="text" v-model="contact.name" placeholder="Name">
     <input :class="{error: contactErrors.email}" type="email" v-model="contact.email" placeholder="Email">
-    <!-- Grammarly adds overflow: hidden and cuts off the box-shows -->
-    <textarea type="text" v-model="contact.message" placeholder="Message" rows="5" data-gramm_editor="false"></textarea>
-    <button @click="submit" class="button" type="button" name="button"><span v-if="!submitting">Send</span><i class="fas fa-spinner fa-pulse" v-if="submitting"></i></button>
+    <!-- Grammarly adds overflow: hidden and cuts off the box-shadows -->
+    <textarea type="text" v-model="contact.message" placeholder="Message" rows="5" data-gramm_editor="false"></textarea>    
+    <button @click="submit" class="button" type="button" name="button">
+      <span v-if="!submitting">Send</span>
+      <font-awesome-icon v-if="submitting" icon="spinner" pulse ></font-awesome-icon>
+    </button>
   </form>
 </template>
 
@@ -57,7 +60,7 @@ export default {
       if (errors == false) {
         this.submitting = true
         axios.post(
-          'https://btfrost-3edab.firebaseio.com/data.json',
+          'https://btfrost-3edab.firebaseio.com/contact.json',
           this.contact
         ).then(function (response) {
           vm.submitting = false
@@ -72,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
-  
+
   #contact-form {
     > * {
       margin: $spacing/2 0;

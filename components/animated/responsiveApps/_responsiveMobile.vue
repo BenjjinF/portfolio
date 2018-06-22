@@ -3,10 +3,10 @@
       <div class="menu" :style="transition(0)"></div>
       <div class="content">
           <div class="image" :style="transition(1)"></div>
-          <div class="text1" :style="transition(1)"></div>
-          <div class="text2" :style="transition(1.333)"></div>
-          <div class="text3" :style="transition(1.666)"></div>
-          <div class="text4" :style="transition(1.999)"></div>
+          <div class="text" :style="transition(1)"></div>
+          <div class="text" :style="transition(1.333)"></div>
+          <div class="text" :style="transition(1.666)"></div>
+          <div class="text" :style="transition(1.999)"></div>
       </div>
     </div>
 </template>
@@ -26,30 +26,40 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+$menu-height: 12%;
+$image-height: 40%;
+$spuedo-margin: 9%;
+
 .responsive-apps {
   .responsive-mobile {
     background-color: $white;
-    border: .25rem solid $primary-dark;
+    border: .25em solid $primary-dark;
     height: 50%;
     pointer-events: none;
     top: 50%;
     .menu {
       background-color: $primary-dark;
-      height: 12%;
+      height: $menu-height;
       width: 0%;
     }
     .content {
-      padding: 10%;
-      height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100% - $menu-height - $spuedo-margin;
+      width: 100% - $spuedo-margin*2;
+      left: $spuedo-margin;
+      top: $spuedo-margin/2 + $menu-height;
       .image {
         background-color: $primary-light;
-        height: 37%;
+        height: $image-height;
         opacity: 0;
       }
-      .text1, .text2, .text3, .text4,  {
+      .text  {
         background-color: $grey;
-        margin: 10% 0;
-        height: 7%;
+        height: 7.5%;
         width: 0%;
       }
     }
@@ -63,7 +73,7 @@ export default {
         .image {
           opacity: 1;
         }
-        .text1, .text2, .text3, .text4,  {
+        .text {
           width: 100%;
         }
       }

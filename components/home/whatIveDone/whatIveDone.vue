@@ -9,6 +9,7 @@
         :thumbnailURL="project.thumbnailURL"
         :id="project.id"
         :image="project.image"
+        :lazy="lazy"
         ></projectPreview>
     </div>
   </section>
@@ -17,7 +18,16 @@
 <script>
 import projectPreview from '~/components/home/whatIveDone/_projectPreview.vue'
 export default {
-  props: ['projects'],
+  props: {
+    projects: {
+      type: Array,
+      required: true
+    },
+    lazy: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     projectPreview
   }
@@ -27,16 +37,10 @@ export default {
 <style lang="scss">
 
 .project-previews {
-  display: flex;
-  flex-direction: column;
-  a {
-    text-decoration: none;
-    color: $primary-light;
-  }
-  @include media(">=md") {
+  @include media(">md") {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-
 }
 </style>

@@ -45,7 +45,7 @@ $blue-grey-900: #263238;
 // Layout
 // *****************
 
-$spacing: 1rem;
+$spacing: 1em;
 
 $header-padding-sm-y: $spacing * 1.25;
 $header-padding-sm-x: $spacing * 2;
@@ -57,13 +57,13 @@ $header-padding-lg-y: $spacing * 4;
 $header-padding-lg-x: $spacing * 4;
 $header-padding-lg: $header-padding-lg-y $header-padding-lg-x;
 
-$header-font-size-sm: 2rem;
-$header-font-size-md: 2.25rem;
-$header-font-size-lg: 2.75rem;
+$header-font-size-sm: 2em;
+$header-font-size-md: 2.25em;
+$header-font-size-lg: 2.75em;
 
 $header-logo-height-sm: $header-font-size-sm;
-$header-logo-width-md: 3rem;
-$header-logo-width-lg: 13rem;
+$header-logo-width-md: 3em;
+$header-logo-width-lg: 13em;
 
 $header-height-sm: $header-padding-sm-y * 2 + $header-logo-height-sm;
 $header-width-md: $header-padding-md-x * 2 + $header-logo-width-md;
@@ -84,7 +84,7 @@ $main-padding-lg: $main-padding-lg-y $main-padding-lg-x;
 // Borders
 // *****************
 
-$default-border-radius: .25rem;
+$default-border-radius: .25em;
 $default-border-width: 5px;
 
 // *****************

@@ -1,6 +1,6 @@
 <template lang="html">
   <nav v-if="show">
-    <i :class="icon" @click="back"></i>
+    <font-awesome-icon :icon="['fa', icon[0]]" :pulse="icon[1]" @click="back"></font-awesome-icon>
   </nav>
 </template>
 
@@ -21,9 +21,9 @@ export default {
     },
     icon() {
       if (this.$store.state.loading ) {
-        return 'fas fa-spinner fa-pulse'
+        return ['spinner', true]
       } else {
-        return 'fas fa-chevron-left'
+        return ['chevron-left', false]
       }
     },
     show() {
@@ -44,27 +44,28 @@ export default {
 <style lang="scss">
 
   nav {
-    display: flex;
-    align-items: center;
-    font-size: 2em;
-    transition: $transition-duration;
     color: $primary-light;
     z-index: 1000;
+    svg {
+      transition: color $transition-duration;
+      font-size: 2em !important;
+    }
     &:hover {
-      color: $primary-bright;
+      svg {
+        color: $primary-bright;
+      }
     }
     @include media(">md") {
-      position: absolute;
-      color: $grey;
-      cursor: pointer;
-      padding: $spacing $spacing/2 $spacing 0;
       background-color: hsla(100, 100, 100, .85);
       border-radius: 0 $default-border-radius $default-border-radius 0;
-      justify-content: center;
+      color: $grey;
+      cursor: pointer;
       left: $header-width-md + $main-padding-md-x;
+      padding: $spacing $spacing/2 $spacing 0;
+      position: absolute;
       top: $main-padding-md-y;
 
-      .fas.fa-spinner.fa-pulse {
+      svg.fa-spinner {
         color: $primary-bright;
       }
     }
@@ -72,7 +73,6 @@ export default {
       left: $header-width-lg + $main-padding-lg-x;
       top: $main-padding-lg-y;
     }
-
   }
   @include media("<md") {
     .wrapper {

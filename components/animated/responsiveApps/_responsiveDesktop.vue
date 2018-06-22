@@ -3,10 +3,10 @@
       <div class="menu" :style="transition(0)"></div>
       <div class="content">
           <div class="image" :style="transition(1)"></div>
-          <div class="text1" :style="transition(1)"></div>
-          <div class="text2" :style="transition(1.333)"></div>
-          <div class="text3" :style="transition(1.666)"></div>
-          <div class="text4" :style="transition(1.999)"></div>
+          <div class="text" :style="transition(1)"></div>
+          <div class="text" :style="transition(1.333)"></div>
+          <div class="text" :style="transition(1.666)"></div>
+          <div class="text" :style="transition(1.999)"></div>
       </div>
     </div>
 </template>
@@ -26,10 +26,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+$menu-width: 20%;
+$image-height: 43.5%;
+$spuedo-margin: 7%;
+
 .responsive-apps {
   .responsive-desktop {
     background-color: $white;
-    border: .25rem solid $primary-dark;
+    border: .25em solid $primary-dark;
     height: 100%;
     pointer-events: none;
     top: 0%;
@@ -41,19 +46,20 @@ export default {
     }
     .content {
       position: absolute;
-      padding: 10%;
-      height: 100%;
-      width: 80%;
-      left: 20%;
-      top: 0%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100% - $spuedo-margin*.9*2;
+      width: 100% - $spuedo-margin*2 - $menu-width;
+      left: $menu-width + $spuedo-margin;
+      top: $spuedo-margin*.9;
       .image {
         background-color: $primary-light;
-        height: 45%;
+        height: $image-height;
         opacity: 0;
       }
-      .text1, .text2, .text3, .text4,  {
+      .text {
         background-color: $grey;
-        margin: 10% 0;
         height: 7.5%;
         width: 0%;
       }
@@ -62,13 +68,13 @@ export default {
   &.active {
     .responsive-desktop {
       .menu {
-        width: 20%;
+        width: $menu-width;
       }
       .content {
         .image {
           opacity: 1;
         }
-        .text1, .text2, .text3, .text4,  {
+        .text {
           width: 100%;
         }
       }

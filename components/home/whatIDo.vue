@@ -1,7 +1,7 @@
 <template lang="html">
   <section id="what-i-do">
     <intro class="intro"></intro>
-    <div v-if="!animationsDone" :track-scroll="scroll" style="display: none;"></div>
+    <div v-if="animations.length > 0" :track-scroll="scroll" style="display: none;"></div>
     <h1 class="what-i-do"><span class="underline">What I Do</span></h1>
     <article>
       <div class="animation">
@@ -44,80 +44,72 @@ export default {
   data() {
     return {
       'isMounted': false,
+      'animateAtsSet': false,
+      'animationsDone': false,
       'animations': [
         {
-          'alreadyRun': false,
           'ref': 'responsiveAnimation',
+          'delay': 300,
+          'position': null,
           'offset': -300,
-          'delay': 300
+          'animateAt': null
+
         },
         {
-          'alreadyRun': false,
           'ref': 'automateAnimation',
+          'delay': 0,
+          'position': null,
           'offset': -300,
-          'delay': 0
+          'animateAt': null
         },
         {
-          'alreadyRun': false,
           'ref': 'reportsAnimation',
+          'delay': 0,
+          'position': null,
           'offset': -300,
-          'delay': 0
+          'animateAt': null
         },
-        // animating the skill bars cause the component to reload
-        // {
-        //   'alreadyRun': false,
-        //   'ref': 'languages',
-        //   'offset': -400,
-        //   'delay': 0
-        // },
-        // {
-        //   'alreadyRun': false,
-        //   'ref': 'frameworks',
-        //   'offset': -600,
-        //   'delay': 0
-        // },
       ]
     }
   },
   methods: {
-    animate(value) {
-      if (!value.alreadyRun) {
-        setTimeout(() => {
-          let ref = this.$refs[value.ref]
-          if (Array.isArray(this.$refs[value.ref])) {
-            ref = ref[0]
-          }
-          let animateAt = ref.$el.offsetTop + value.offset
-          if (this.$store.state.scroll >= animateAt) {
-            ref.animate()
-            value.alreadyRun = true
-          }
-        }, value.delay)
-      }
+    setAnimateAts() {
+      this.animations.forEach((value) => {
+        let ref = this.$refs[value.ref]
+        if (Array.isArray(this.$refs[value.ref])) {
+          ref = ref[0]
+        }
+        value.animateAt = ref.$el.offsetTop + value.offset
+      })
+      this.animateAtsSet = true
+    },
+    animate(value, index) {
+      setTimeout(() => {
+        let ref = this.$refs[value.ref]
+        if (Array.isArray(this.$refs[value.ref])) {
+          ref = ref[0]
+        }
+        ref.animate()
+        this.animations.splice(index, 1);
+      }, value.delay)
     },
   },
   computed: {
-    animationsDone() {
-      for (let animation in this.animations) {
-        if (!animation.alreadyRun) {
-          return false
-        }
-      }
-      return true
-    },
     scroll() {
       if (process.browser && this.isMounted ) {
-        if (!this.animationsDone) {
-          let scroll = this.$store.state.scroll
-          this.animations.forEach((value) => {
-            this.animate(value)
-          })
-          return scroll
+        if (!this.animateAtsSet) {
+          this.setAnimateAts()
         }
+        let scroll = this.$store.state.scroll
+        this.animations.forEach((value, index) => {
+          if (scroll > value.animateAt) {
+            this.animate(value, index)
+          }
+        })
+        return scroll
       }
     },
   },
-
   mounted() {
     this.isMounted = true
   },
@@ -133,57 +125,57 @@ export default {
 <style lang="scss">
 
   #what-i-do {
-    display: flex;
-    flex-direction: column;
-
     .intro {
       margin-top: 0;
-      margin-bottom: $spacing * 3;
+      margin-bottom: $main-padding-sm-y;
       text-align: center;
     }
     article {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin-bottom: $spacing * 3;
       > .animation {
         width: 70%;
-        margin-bottom: $spacing;
+        margin: 0 auto;
       }
       .description {
         h2, p {
           text-align: center;
         }
+        h2 {
+          margin: $spacing/2 0;
+        }
+        p {
+          margin-top: 0;
+        }
       }
     }
     @include media(">md") {
-      flex-wrap: wrap;
-      align-items: flex-start;
-      margin-bottom: $spacing * 5;
       .intro {
         width: 100%;
         background-color: $primary-light;
         padding: $spacing;
         border-radius: $default-border-radius;
         color: $primary-dark;
+        margin-bottom: $main-padding-md-y
       }
       article {
+        display: flex;
         flex-direction: row;
-        width: 100%;
-        align-items: center;
-        &:last-child {
-          margin-bottom: 0;
+        justify-content: space-between;
+        .animation, .description {
+          display: inline-block;
         }
         .animation {
-          margin-right: 6%;
+          margin: 0;
           width: 35%;
         }
         .description {
-          width: 49%;
+          width: 55%;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          justify-content: center;
           h2, p {
+            margin-top: 0;
+            width: 100%;
             text-align: left;
           }
         }

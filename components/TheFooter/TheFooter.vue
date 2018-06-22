@@ -1,7 +1,7 @@
 <template lang="html">
-  <footer>
+  <div class="footer">
     <p>Benjamin Frost ©{{year}}</p>
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss">
 
-footer {
+.footer {
   text-align: center;
   p {
     margin-bottom: 0;

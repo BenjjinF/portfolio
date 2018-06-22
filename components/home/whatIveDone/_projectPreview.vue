@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="project-preview">
       <nuxt-link :to="'projects/' + id">
-        <div class="thumbnail" :style="{backgroundImage: 'url(' + image + ')'}">
+        <div class="thumbnail" ref="thumbnail" :style="getStyle">
           <div class="text">
             <h4>{{title}}</h4>
             <p>{{previewText}}</p>
@@ -33,6 +33,32 @@ export default {
     image: {
       type: String,
       required: false
+    },
+    lazy: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      imageLoaded: false,
+      style: {
+        backgroundImage: 'url(' + this.image + ')'
+      }
+    }
+  },
+  computed: {
+    getStyle() {
+      if (process.browser) {
+        if (this.imageLoaded || !this.lazy) {
+          return this.style
+        } else {
+          if (this.$store.state.scroll > 100) {
+            this.imageLoaded = true
+            return this.style
+          }
+        }
+      }
     }
   }
 }
@@ -40,28 +66,24 @@ export default {
 
 <style lang="scss">
 
-
   .project-preview {
     width: 100%;
-    height: 15rem;
+    height: 15em;
     border-radius: $default-border-radius;
     overflow: hidden;
     background-color: $primary-light;
     transition-duration: $transition-duration;
-
-    @include media(">md") {
-      width: 47%;
+    &:hover {
+      background-color: $primary-bright;
     }
     &:not(:last-child) {
       margin-bottom: $spacing * 2;
     }
 
-    &:hover {
-      background-color: $primary-bright;
-    }
     a, a:visited {
+      text-decoration: none;
       h4 {
-        color: $white;
+        color: $primary-light;
       }
       p {
         color: $grey;
@@ -72,25 +94,26 @@ export default {
       height: 100%;
       background-repeat: no-repeat;
       background-size: cover;
-      padding: $spacing;
       mix-blend-mode: luminosity;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       .text {
+        margin: $spacing;
         background-color: hsla(209%, 42%, 19%, .9);
         border-radius: $default-border-radius;
-        padding: $spacing;
         text-align: center;
-        h4 {
-          margin-bottom: $spacing/2;
+        h4, p {
+          margin: $spacing/2;
         }
-        p {
-          margin: 0;
-          color: $grey;
+        h4 {
+          margin-bottom: 0;
         }
       }
+    }
+    @include media(">md") {
+      width: 47%;
     }
   }
 </style>

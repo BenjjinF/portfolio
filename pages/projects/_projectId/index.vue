@@ -23,21 +23,22 @@
 
 <script>
 export default {
-  asyncData(context) {
-    return context.app.$storyapi.get('cdn/stories/projects/' + context.params.projectId, {
-      version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
-    }).then(res => {
-      return {
-        blok: res.data.story.content,
-        title: res.data.story.content.title,
-        previewText: res.data.story.content.previewText,
-        description: res.data.story.content.description,
-        features: res.data.story.content.features,
-        technologies: res.data.story.content.technologies,
-        url: res.data.story.content.url,
-        images: res.data.story.content.images
+  async asyncData(context) {
+    const { data } = await context.app.$storyapi.get(
+      'cdn/stories/projects/' + context.params.projectId, {
+        version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
       }
-    })
+    )
+    return {
+      blok: data.story.content,
+      title: data.story.content.title,
+      previewText: data.story.content.previewText,
+      description: data.story.content.description,
+      features: data.story.content.features,
+      technologies: data.story.content.technologies,
+      url: data.story.content.url,
+      images: data.story.content.images
+    }
   },
   mounted() {
     this.$storyblok.init()

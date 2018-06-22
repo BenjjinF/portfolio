@@ -1,7 +1,7 @@
 <template>
   <div class="page page-home">
     <whatIDo></whatIDo>
-    <whatIveDone :projects="projects"></whatIveDone>
+    <whatIveDone :projects="projects" :lazy="true"></whatIveDone>
     <whatIKnow></whatIKnow>
   </div>
 </template>
@@ -12,30 +12,24 @@
   import whatIKnow from '~/components/home/whatIKnow/whatIKnow.vue'
 
   export default {
-    asyncData(context) {
-      return context.app.$storyapi.get('cdn/stories', {
-        version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
-        starts_with: 'projects/',
-        is_startpage: 0
-      }).then ( res => {
-        let projects = res.data.stories.map(story => {
-          let project = {
+    async asyncData(context) {
+      const { data } = await context.app.$storyapi.get(
+        'cdn/stories', {
+          version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
+          starts_with: 'projects/',
+          is_startpage: 0
+        }
+      )
+      return {
+        'projects': data.stories.map(story => {
+          return {
             id: story.slug,
             title: story.content.title,
             previewText: story.content.previewText,
-            thumbnailURL: story.content.image,
+            image: story.content.images.length > 0 ? story.content.images[0].image : '',
           }
-          if (story.content.images.length) {
-            project['image'] = story.content.images[0].image
-          } else {
-            project['image'] = story.content.images = ''
-          }
-          return project
         })
-        return {
-          'projects': projects
-        }
-      })
+      }
     },
     components: {
       whatIDo,

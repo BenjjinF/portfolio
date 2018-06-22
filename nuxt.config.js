@@ -1,6 +1,7 @@
 const pkg = require('./package')
 const axios = require('axios')
-const apiKeys = require('./apiKeys.js')
+const credentials = require('./credentials.js')
+
 module.exports = {
   mode: 'universal',
   /*
@@ -19,16 +20,14 @@ module.exports = {
       { name: 'theme-color', content: '#1c3144' }
     ],
     link: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com/css?family=Montserrat:400|Open+Sans:400' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'manifest', type: 'image/png', href: '/site.webmanifest' },
-      { rel: 'mask-icon', color: '#1c3144', href: '/safari-pinned-tab.svg' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css', integrity: 'sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg', crossorigin: 'anonymous' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400|Open+Sans:400' }
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c3144' }
     ]
   },
-
   /*
   ** Customize the progress-bar color
   */
@@ -53,11 +52,16 @@ module.exports = {
       src: '~plugins/nav',
       ssr: false
     },
-    // {
-    //   src: '~plugins/beforeUnload',
-    //   ssr: false
-    // }
+    {
+      src: '~plugins/fontawesome',
+      ssr: true
+    },
+    {
+      src: '~plugins/firebaseInit',
+      ssr: false
+    },
   ],
+
   /*
   ** Nuxt.js modules
   */
@@ -65,19 +69,23 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     ['storyblok-nuxt', {
-      accessToken: process.env.NODE_ENV == 'production' ? apiKeys.storyblokProductionKey : apiKeys.storyblokDevelopmentKey,
+      accessToken: process.env.NODE_ENV == 'production' ? credentials.storyblok.production : credentials.storyblok.development,
       cacheProvider: 'memory'}
     ],
     ['@nuxtjs/google-analytics', {
       id: 'UA-117111458-1'
     }],
-    ['nuxt-sass-resources-loader', '~/assets/styles/1-helpers/_1-helpers.scss']
+    ['nuxt-sass-resources-loader', '~/assets/styles/1-helpers/_1-helpers.scss'],
+    ['@nuxtjs/pwa', {
+      onesignal: false,
+      icon: false
+    }]
   ],
 
   generate: {
     routes: function () {
       return axios.get(
-        "https://api.storyblok.com/v1/cdn/stories?version=published&token=" + apiKeys.storyblokProductionKey + "&starts_with=projects&cv=" +
+        "https://api.storyblok.com/v1/cdn/stories?version=published&token=" + credentials.storyblok.production + "&starts_with=projects&cv=" +
           Math.floor(Date.now() / 1e3)
       )
       .then(res => {
@@ -89,7 +97,7 @@ module.exports = {
           ...projects
         ]
       })
-    },
+    }
   },
 
   /*
@@ -111,7 +119,9 @@ module.exports = {
     extractCSS: true,
     vendor: [
       'babel-polyfill',
-    ],
+      'marked',
+      'axios'
+    ]
     // postcss: {
     //   plugins: {
     //     'autoprefixer': {},
