@@ -3,7 +3,7 @@
     <input :class="{error: contactErrors.name}" type="text" v-model="contact.name" placeholder="Name">
     <input :class="{error: contactErrors.email}" type="email" v-model="contact.email" placeholder="Email">
     <!-- Grammarly adds overflow: hidden and cuts off the box-shadows -->
-    <textarea type="text" v-model="contact.message" placeholder="Message" rows="5" data-gramm_editor="false"></textarea>    
+    <textarea type="text" v-model="contact.message" placeholder="Message" rows="5" data-gramm_editor="false"></textarea>
     <button @click="submit" class="button" type="button" name="button">
       <span v-if="!submitting">Send</span>
       <font-awesome-icon v-if="submitting" icon="spinner" pulse ></font-awesome-icon>
@@ -30,10 +30,6 @@ export default {
     }
   },
   methods: {
-    validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(String(email).toLowerCase())
-    },
     validate() {
       let errors = false
       this.contactErrors = {

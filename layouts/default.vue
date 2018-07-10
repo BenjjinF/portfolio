@@ -1,5 +1,5 @@
 <template lang="html" >
-  <div class="wrapper" v-else>
+  <div class="wrapper">
     <TheHeader></TheHeader>
     <Back></Back>
     <div class="main">

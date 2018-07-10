@@ -43,20 +43,18 @@ export default {
     return {
       imageLoaded: false,
       style: {
-        backgroundImage: 'url(' + this.image + ')'
+        backgroundImage: 'url(' + this.resizeImage(this.image, '350x0') + ')'
       }
     }
   },
   computed: {
     getStyle() {
-      if (process.browser) {
-        if (this.imageLoaded || !this.lazy) {
+      if (this.imageLoaded || !this.lazy) {
+        return this.style
+      } else {
+        if (this.$store.state.scroll > 100) {
+          this.imageLoaded = true
           return this.style
-        } else {
-          if (this.$store.state.scroll > 100) {
-            this.imageLoaded = true
-            return this.style
-          }
         }
       }
     }
