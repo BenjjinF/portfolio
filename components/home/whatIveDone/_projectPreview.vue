@@ -93,6 +93,7 @@ export default {
       background-repeat: no-repeat;
       background-size: cover;
       mix-blend-mode: luminosity;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;

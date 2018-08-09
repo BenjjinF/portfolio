@@ -50,30 +50,37 @@ export default {
     max-width: 1200px;
     margin-top: $header-height-sm;
     padding: $main-padding-sm;
-    section {
-      &:not(:last-child) {
-        margin-bottom: $main-padding-sm-y;
-      }
-      h1 {
-        margin-bottom: $main-padding-sm-y;
-      }
-      .spacer {
-        height: $main-padding-sm-y;
+    .page {
+      min-height: calc(100vh - #{$main-padding-sm-y}*3 - #{$header-height-sm}- 1.4em);
+      section {
+        &:not(:last-child) {
+          margin-bottom: $main-padding-sm-y;
+        }
+        h1 {
+          margin-bottom: $main-padding-sm-y;
+        }
+        .spacer {
+          height: $main-padding-sm-y;
+        }
       }
     }
+    
   }
   @include media(">md") {
     .main {
       margin-top: 0;
       padding: $main-padding-md;
       padding-left: $main-padding-md-x + $header-width-md;
-      section {
-        &:not(:last-child) {
-          margin-bottom: $main-padding-md-y;
-        }
-        h1 {
-          margin-bottom: $main-padding-md-y;
-          width: 100%;
+      .page {
+        min-height: calc(100vh - #{$main-padding-md-y}*3 - 1.4em);
+        section {
+          &:not(:last-child) {
+            margin-bottom: $main-padding-md-y;
+          }
+          h1 {
+            margin-bottom: $main-padding-md-y;
+            width: 100%;
+          }
         }
       }
     }
@@ -82,25 +89,17 @@ export default {
     .main {
       padding: $main-padding-lg;
       padding-left: $main-padding-lg-x + $header-width-lg;
-      section {
-        h1 {
-          margin-bottom: $main-padding-lg-y - $spacing;
-        }
-        &:not(:last-child) {
-          margin-bottom: $main-padding-lg-y;
+      .page {
+        min-height: calc(100vh - #{$main-padding-lg-y}*3 - 1.4em);
+        section {
+          h1 {
+            margin-bottom: $main-padding-lg-y - $spacing;
+          }
+          &:not(:last-child) {
+            margin-bottom: $main-padding-lg-y;
+          }
         }
       }
-    }
-  }
-  .footer {
-    width: 100%;
-    max-width: 1200px;
-    margin-top: $header-padding-sm-y;
-    @include media(">md") {
-      margin-top: $header-padding-md-y;
-    }
-    @include media(">lg") {
-      margin-top: $header-padding-lg-y;
     }
   }
 }

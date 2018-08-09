@@ -4,10 +4,10 @@ const mailgun = require('mailgun-js')({
   domain: functions.config().mailgun.domain
 })
 
-exports.contactSubmission = functions.database.ref('contact/{timestamp}')
-  .onCreate(event => {
-  
-    const submission = event._data
+exports.contactSubmission = functions.database.ref('contact/{id}')
+  .onCreate((snap, context) => {
+    console.log()
+    const submission = snap.val()
     let { name, email, message } = submission
 
     let emailOptions = {

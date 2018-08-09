@@ -9,8 +9,8 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.1.0",
+    "firebase-admin": "5.13.1",
+    "firebase-functions": "^2.0.2",
     "mailgun-js": "^0.18.1"
   },
   "private": true
