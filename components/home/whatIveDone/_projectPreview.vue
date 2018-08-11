@@ -10,7 +10,6 @@
       </nuxt-link>
     </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -30,8 +29,8 @@ export default {
       type: String,
       required: true
     },
-    image: {
-      type: String,
+    images: {
+      type: Array,
       required: false
     },
     lazy: {
@@ -42,12 +41,26 @@ export default {
   data() {
     return {
       imageLoaded: false,
-      style: {
-        backgroundImage: 'url(' + this.resizeImage(this.image, '350x0') + ')'
-      }
     }
   },
   computed: {
+    image() {
+      console.log(this.images)
+      if (this.images) {
+        return this.images[0].image
+      } else {
+        return null
+      }
+    },
+    style() {
+      if (this.image.length) {
+        return {
+          backgroundImage: 'url(' + this.resizeImage(this.image, '350x0') + ')'
+        }
+      } else {
+        return null
+      }
+    },
     getStyle() {
       if (this.imageLoaded || !this.lazy) {
         return this.style
@@ -73,6 +86,11 @@ export default {
     transition-duration: $transition-duration;
     &:hover {
       background-color: $primary-bright;
+      .thumbnail {
+        .text {
+          opacity: 0;
+        }
+      }
     }
     &:not(:last-child) {
       margin-bottom: $spacing * 2;
@@ -103,6 +121,7 @@ export default {
         background-color: hsla(209%, 42%, 19%, .9);
         border-radius: $default-border-radius;
         text-align: center;
+        transition-duration: $transition-duration;
         h4, p {
           margin: $spacing/2;
         }

@@ -8,7 +8,7 @@
         :previewText="project.previewText"
         :thumbnailURL="project.thumbnailURL"
         :id="project.id"
-        :image="project.image"
+        :images="project.images"
         :lazy="lazy"
         ></projectPreview>
     </div>
@@ -18,15 +18,11 @@
 <script>
 import projectPreview from '~/components/home/whatIveDone/_projectPreview.vue'
 export default {
-  props: {
-    projects: {
-      type: Array,
-      required: true
+  props: ['lazy'],
+  computed: {
+    projects() {
+      return this.$store.state.projectData
     },
-    lazy: {
-      type: Boolean,
-      default: false
-    }
   },
   components: {
     projectPreview

@@ -24,21 +24,26 @@
 <script>
 export default {
   async asyncData(context) {
-    const { data } = await context.app.$storyapi.get(
-      'cdn/stories/projects/' + context.params.projectId, {
-        version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
+    let project = context.store.state.projectData.filter(project => project.id == context.params.projectId)[0]
+    if (!project) {
+      const { data } = await context.app.$storyapi.get(
+        'cdn/stories/projects/' + context.params.projectId, {
+          version: process.env.NODE_ENV == 'production' ? 'published' : 'draft',
+        }
+      )
+      project = {
+        blok: data.story.content,
+        id: data.story.slug,
+        title: data.story.content.title,
+        previewText: data.story.content.previewText,
+        description: data.story.content.description,
+        features: data.story.content.features,
+        technologies: data.story.content.technologies,
+        url: data.story.content.url,
+        images: data.story.content.images
       }
-    )
-    return {
-      blok: data.story.content,
-      title: data.story.content.title,
-      previewText: data.story.content.previewText,
-      description: data.story.content.description,
-      features: data.story.content.features,
-      technologies: data.story.content.technologies,
-      url: data.story.content.url,
-      images: data.story.content.images
     }
+    return project
   },
   mounted() {
     this.$storyblok.init()

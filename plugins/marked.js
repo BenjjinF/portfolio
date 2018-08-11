@@ -7,9 +7,13 @@ Vue.mixin({
       return marked(input)
     },
     resizeImage: (image, option) => {
-      var imageService = '//img2.storyblok.com/'
-      var path = image.replace('//a.storyblok.com', '')
-      return imageService + option + path
+      if (image.length) {
+        var imageService = '//img2.storyblok.com/'
+        var path = image.replace('//a.storyblok.com', '')
+        return imageService + option + path
+      } else {
+        return null
+      }
     }
   }
 })
