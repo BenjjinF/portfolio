@@ -48,7 +48,7 @@ module.exports = {
   */
   plugins: [
     {
-      src: '~plugins/marked',
+      src: '~plugins/mixins',
       ssr: true
     },
     {
@@ -63,6 +63,10 @@ module.exports = {
       src: '~plugins/firebaseInit',
       ssr: false
     },
+    {
+      src: '~plugins/raven.js',
+      ssr: true
+    }
   ],
 
   /*

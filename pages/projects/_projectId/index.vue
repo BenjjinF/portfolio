@@ -63,20 +63,25 @@ export default {
   width: 100%;
   .images {
     position: relative;
-    margin-bottom: $spacing * 2;
+    margin-bottom: $spacing;
     .image {
       border-radius: $default-border-radius;
       background-color: $primary-light;
       border: 1px solid $blue-grey-50;
-      &.desktop {
-        width: 90%;
-      }
-      &.mobile {
-        position: absolute;
-        height: 75%;
-        bottom: 0%;
-        right: 0;
-        margin-bottom: 5px;
+      width: 100%;
+      margin-bottom: $spacing;
+      @include media(">md") {
+        &.desktop {
+          width: 90%;
+        }
+        &.mobile {
+          position: absolute;
+          height: 75%;
+          width: auto;
+          bottom: 0%;
+          right: 0;
+          margin-bottom: 5px;
+        }
       }
     }
   }

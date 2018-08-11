@@ -57,7 +57,7 @@ export default {
           margin-bottom: $main-padding-sm-y;
         }
         h1 {
-          margin-bottom: $main-padding-sm-y;
+          margin-bottom: $main-padding-sm-y/2;
         }
         .spacer {
           height: $main-padding-sm-y;
