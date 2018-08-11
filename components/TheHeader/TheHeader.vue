@@ -10,16 +10,16 @@
         <Back v-if="showBackNav"></Back>
         <Intro></Intro>
         <div class="contact">
-          <a href="https://www.linkedin.com/in/benjamin-frost-31664631/" rel="noopener" target="_blank">
+          <a href="https://www.linkedin.com/in/benjamin-frost-31664631/" title="linkedin" rel="noopener" target="_blank">
             <font-awesome-icon :icon="['fab', 'linkedin']"></font-awesome-icon>
           </a>
-          <a href="https://github.com/BenjjinF" rel="noopener" target="_blank">
+          <a href="https://github.com/BenjjinF" title="github" rel="noopener" target="_blank">
             <font-awesome-icon :icon="['fab', 'github-square']"></font-awesome-icon>
           </a>
-          <a href="https://www.instagram.com/btfrost/" rel="noopener" target="_blank">
+          <a href="https://www.instagram.com/btfrost/" title="instagram" rel="noopener" target="_blank">
             <font-awesome-icon :icon="['fab', 'instagram']"></font-awesome-icon>
           </a>
-          <nuxt-link to="/contact">
+          <nuxt-link to="/contact" title="contact">
             <font-awesome-icon :icon="['fa', 'envelope']">
           </font-awesome-icon></nuxt-link>
         </div>
