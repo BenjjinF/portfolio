@@ -26,7 +26,10 @@ module.exports = {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/manifest.json' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c3144' }
-    ]
+    ],
+    noscript: [
+      { innerHTML: "<strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>", body: true }
+    ]  
   },
   /*
   ** Customize the progress-bar color
