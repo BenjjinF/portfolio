@@ -18,7 +18,8 @@ async function getProjectData(app) {
       features: story.content.features,
       technologies: story.content.technologies,
       url: story.content.url,
-      images: story.content.images
+      desktopImage: story.content.desktop_image,
+      mobileImage:story.content.mobile_image
     }
   })
 }

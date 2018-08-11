@@ -135,6 +135,7 @@ export default {
       > .animation {
         width: 70%;
         margin: 0 auto;
+        user-select: none;
       }
       .description {
         h2, p {

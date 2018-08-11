@@ -3,7 +3,8 @@
     <section id="project" v-editable="blok">
       <h1><span class="underline">{{ title }}</span></h1>
       <div class="images">
-        <img v-for="image, index in images" :key="index" :src="image.image">
+        <img class="image desktop" :src="desktopImage">
+        <img class="image mobile" :src="mobileImage">
       </div>
       <div class="text">
         <div v-if="description" v-html="marked(description)"></div>
@@ -40,7 +41,8 @@ export default {
         features: data.story.content.features,
         technologies: data.story.content.technologies,
         url: data.story.content.url,
-        images: data.story.content.images
+        desktopImage: data.story.content.desktopImage,
+        mobileImage: data.story.content.mobileImage
       }
     }
     return project
@@ -60,14 +62,21 @@ export default {
 #project {
   width: 100%;
   .images {
-    img {
-      width: 100%;
+    position: relative;
+    margin-bottom: $spacing * 2;
+    .image {
       border-radius: $default-border-radius;
       background-color: $primary-light;
-      margin-bottom: $spacing * 2;
-      // make gallery later
-      &:not(:first-child) {
-        display: none;
+      border: 1px solid $blue-grey-50;
+      &.desktop {
+        width: 90%;
+      }
+      &.mobile {
+        position: absolute;
+        height: 75%;
+        bottom: 0%;
+        right: 0;
+        margin-bottom: 5px;
       }
     }
   }

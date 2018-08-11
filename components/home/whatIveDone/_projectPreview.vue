@@ -29,8 +29,8 @@ export default {
       type: String,
       required: true
     },
-    images: {
-      type: Array,
+    desktopImage: {
+      type: String,
       required: false
     },
     lazy: {
@@ -53,12 +53,12 @@ export default {
       }
     },
     style() {
-      if (this.image.length) {
+      if (this.desktopImage) {
         return {
-          backgroundImage: 'url(' + this.resizeImage(this.image, '350x0') + ')'
+          backgroundImage: 'url(' + this.resizeImage(this.desktopImage, '350x0') + ')'
         }
       } else {
-        return null
+        return {}
       }
     },
     getStyle() {

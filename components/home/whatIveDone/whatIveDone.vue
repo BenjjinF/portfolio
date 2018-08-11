@@ -8,7 +8,7 @@
         :previewText="project.previewText"
         :thumbnailURL="project.thumbnailURL"
         :id="project.id"
-        :images="project.images"
+        :desktopImage="project.desktopImage"
         :lazy="lazy"
         ></projectPreview>
     </div>

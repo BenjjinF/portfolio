@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="responsive-apps" :class="status" @mouseover="animate">
+    <div class="responsive-apps" :class="status" @mouseover="animate" @touchstart="animate">
       <responsiveDesktop :speed="speed" :status="status"></responsiveDesktop>
       <responsiveMobile :speed="speed" :status="status"></responsiveMobile>
     </div>

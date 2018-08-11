@@ -1,5 +1,5 @@
 <template lang="html">
-	<div class="reports" @mouseover="animate">
+	<div class="reports" @mouseover="animate" @touchstart="animate">
 		<div class="anchor">
 			<div class="chart" :class="{'bounce': bounce}">
 				<div class="triangle one"></div>

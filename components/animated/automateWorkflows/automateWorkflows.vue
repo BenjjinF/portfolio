@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="automated-workflows" @mouseover="animate">
+  <div class="automated-workflows" @mouseover="animate" @touchstart="animate">
     <div class="anchor">
       <div class="circle">
         <div class="point one" :class="{'active': pointOne}"></div>
