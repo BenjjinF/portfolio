@@ -108,7 +108,7 @@ export default {
     }
   }
   .button {
-    margin-top: $spacing * 2;
+    margin: $spacing * 2 0;
   }
 }
 </style>

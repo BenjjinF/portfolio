@@ -62,10 +62,6 @@ module.exports = {
     {
       src: '~plugins/firebaseInit',
       ssr: false
-    },
-    {
-      src: '~plugins/raven.js',
-      ssr: true
     }
   ],
 
@@ -86,9 +82,17 @@ module.exports = {
     ['@nuxtjs/pwa', {
       onesignal: false,
       icon: false
-    }]
+    }],
+    '@nuxtjs/sentry',
   ],
-
+  sentry: {
+    public_key: '',
+    private_key: '',
+    project_id: '',
+    config: {
+      dsn: 'https://19d4996089d3480e962ca7adfa8f5c20@sentry.io/1260682'
+    }
+  },
   generate: {
     routes: function () {
       return axios.get(
