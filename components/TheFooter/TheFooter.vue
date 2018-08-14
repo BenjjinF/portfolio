@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="footer">
-    <p>Benjamin Frost ©{{year}}</p>
+    <p>Benjamin Frost © {{year}}</p>
   </div>
 </template>
 
