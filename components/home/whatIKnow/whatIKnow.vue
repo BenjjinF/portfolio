@@ -13,23 +13,6 @@ export default {
     return {
       'skillsets': [
         {
-          'name': 'General',
-          'skills': [
-            {
-              'name': 'Web Development',
-              'width': '80%'
-            },
-            {
-              'name': 'Operations',
-              'width': '70%'
-            },
-            {
-              'name': 'Graphic Design',
-              'width': '50%'
-            }
-          ]
-        },
-        {
           'name': 'Frontend',
           'skills': [
             {
