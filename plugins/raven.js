@@ -2,7 +2,9 @@ import Vue from 'vue';
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 
+const credentials = require('../credentials.js')
+
 Raven
-    .config('https://19d4996089d3480e962ca7adfa8f5c20@sentry.io/1260682')
+    .config(credentials.raven.config)
     .addPlugin(RavenVue, Vue)
     .install();
