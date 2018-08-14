@@ -13,36 +13,53 @@ export default {
     return {
       'skillsets': [
         {
-          'name': 'Languages',
+          'name': 'General',
+          'skills': [
+            {
+              'name': 'Web Development',
+              'width': '80%'
+            },
+            {
+              'name': 'Operations',
+              'width': '70%'
+            },
+            {
+              'name': 'Graphic Design',
+              'width': '50%'
+            }
+          ]
+        },
+        {
+          'name': 'Frontend',
+          'skills': [
+            {
+              'name': 'JavaScript',
+              'width': '80%'
+            },
+            {
+              'name': 'Vue.js / Nuxt.js',
+              'width': '80%'
+            },
+            {
+              'name': 'HTML / CSS / SASS / LESS',
+              'width': '75%'
+            }
+          ]
+        },
+        {
+          'name': 'Backend',
           'skills': [
             {
               'name': 'Python',
               'width': '80%'
             },
             {
-              'name': 'HTML / CSS / SASS / LESS',
-              'width': '70%'
-            },
-            {
-              'name': 'JavaScript',
-              'width': '60%'
-            }
-          ]
-        },
-        {
-          'name': 'Frameworks',
-          'skills': [
-            {
               'name': 'Django / Wagtail',
               'width': '80%'
             },
             {
-              'name': 'Vue.js / Nuxt.js / StoryBlok',
-              'width': '70%'
-            },
-            {
-              'name': 'Bootstrap / Semantic UI',
-              'width': '60%'
+              'name': 'Node.js',
+              'width': '40%'
             }
           ]
         }

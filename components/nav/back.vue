@@ -62,7 +62,7 @@ export default {
       cursor: pointer;
       left: $header-width-md + $main-padding-md-x;
       padding: $spacing $spacing/2 $spacing 0;
-      position: absolute;
+      position: fixed;
       top: $main-padding-md-y;
 
       svg.fa-spinner {
