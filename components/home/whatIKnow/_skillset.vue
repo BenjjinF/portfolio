@@ -18,9 +18,9 @@ export default {
 
 <style lang="scss">
 
-  .skillset {
+  .skillset:not(:first-of-type) {
     h3 {
-      margin-top: $spacing * 2;
+      margin-top: $spacing;
     }
   }
 </style>

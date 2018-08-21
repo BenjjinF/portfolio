@@ -8,8 +8,8 @@
         <responsiveApps ref="responsiveAnimation"></responsiveApps>
       </div>
       <div class="description">
-        <h2>Responsive Web Apps</h2>
-        <p>I build fast, scalable web applications that look great on devices of any size.</p>
+        <h2>Web Apps</h2>
+        <p>I build fast, resposive, progressive web apps; they look great on devices of any size and feature offline access.</p>
       </div>
     </article>
 
@@ -145,6 +145,7 @@ export default {
           margin: $spacing/2 0;
         }
         p {
+          margin-bottom: 0;
           margin-top: 0;
         }
       }

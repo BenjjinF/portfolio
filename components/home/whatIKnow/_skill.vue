@@ -31,6 +31,10 @@ export default {
         background-color: $primary-dark;
         color: $primary-light;
         white-space: nowrap;
+        font-size: .9em;
+        @include media(">sm") {
+          font-size: 1em;
+        }
       }
     }
   }

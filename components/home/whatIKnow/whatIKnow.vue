@@ -20,7 +20,7 @@ export default {
               'width': '80%'
             },
             {
-              'name': 'Vue.js / Nuxt.js',
+              'name': 'Vue / Nuxt',
               'width': '80%'
             },
             {
@@ -41,8 +41,8 @@ export default {
               'width': '80%'
             },
             {
-              'name': 'Node.js / Express.js',
-              'width': '40%'
+              'name': 'Node / Express',
+              'width': '50%'
             }
           ]
         }

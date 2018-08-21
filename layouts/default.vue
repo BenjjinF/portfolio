@@ -78,7 +78,7 @@ export default {
             margin-bottom: $main-padding-md-y;
           }
           h1 {
-            margin-bottom: $main-padding-md-y;
+            margin-bottom: $main-padding-md-y * .75;
             width: 100%;
           }
         }
@@ -93,7 +93,7 @@ export default {
         min-height: calc(100vh - #{$main-padding-lg-y}*3 - 1.4em);
         section {
           h1 {
-            margin-bottom: $main-padding-lg-y - $spacing;
+            margin-bottom: $main-padding-lg-y - $spacing * 2;
           }
           &:not(:last-child) {
             margin-bottom: $main-padding-lg-y;
