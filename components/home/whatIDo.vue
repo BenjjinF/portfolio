@@ -2,42 +2,49 @@
   <section id="what-i-do">
     <intro class="intro"></intro>
     <div v-if="animations.length > 0" :track-scroll="scroll" style="display: none;"></div>
-    <h1 class="what-i-do"><span class="underline">What I Do</span></h1>
+    <!-- <h1 class="what-i-do"><span class="underline">What I Do</span></h1> -->
     <article>
-      <div class="animation">
-        <responsiveApps ref="responsiveAnimation"></responsiveApps>
-      </div>
+      <Animation ref="speed" :animationDuration="animationDuration">
+        <Speed></Speed>
+      </Animation>
       <div class="description">
-        <h2>Web Apps</h2>
-        <p>I build fast, resposive, progressive web apps; they look great on devices of any size and feature offline access.</p>
+        <h2>Speed</h2>
+        <p>The technologies I use are fast; both in terms of performance and development time.</p>
       </div>
     </article>
 
     <article>
-      <div class="animation" ref="a">
-        <automateWorkflows ref="automateAnimation"></automateWorkflows>
-      </div>
+      <Animation ref="allPlatforms" :animationDuration="animationDuration">
+       <AllPlatforms></AllPlatforms>
+      </Animation>
       <div class="description">
-        <h2>Automate Workflows</h2>
-        <p>With a background in operations, I know how to get things done; I design business processes to require a human touch only when it is best.</p>
+        <h2>All Platforms</h2>
+        <p>I build for Android, iOS, and desktop simultaneously; why pay thrice for the same functionality?</p>
       </div>
     </article>
+
     <article>
-      <div class="animation">
-        <reports ref="reportsAnimation"></reports>
-      </div>
+      <Animation ref="automation" :animationDuration="animationDuration">
+        <Automation></Automation>
+      </Animation>
       <div class="description">
-        <h2>Self-Generating Reports</h2>
-        <p>I can work with your existing data sources, or help you develop a data-pipeline, so that your business has the information it needs to make informed decisions.</p>
+        <h2>Automation</h2>
+        <p>I've a habit of rendering myself redundant; I can automate tasks which you didn't know you didn't have to do.</p>
       </div>
     </article>
   </section>
 </template>
 
 <script>
-import responsiveApps from '~/components/animated/responsiveApps/responsiveApps.vue'
-import automateWorkflows from '~/components/animated/automateWorkflows/automateWorkflows.vue'
-import reports from '~/components/animated/reports.vue'
+import Animation from '~/components/animated/animation.vue'
+import Speed from '~/components/animated/speed.vue'
+import AllPlatforms from '~/components/animated/allPlatforms.vue'
+
+import Automation from '~/components/animated/automation.vue'
+
+// import responsiveApps from '~/components/animated/responsiveApps/responsiveApps.vue'
+// import automateWorkflows from '~/components/animated/automateWorkflows/automateWorkflows.vue'
+// import reports from '~/components/animated/reports.vue'
 import intro from '~/components/TheHeader/_intro.vue'
 
 export default {
@@ -46,9 +53,10 @@ export default {
       'isMounted': false,
       'animateAtsSet': false,
       'animationsDone': false,
+      'animationDuration': 2.5,
       'animations': [
         {
-          'ref': 'responsiveAnimation',
+          'ref': 'speed',
           'delay': 300,
           'position': null,
           'offset': -300,
@@ -56,14 +64,14 @@ export default {
 
         },
         {
-          'ref': 'automateAnimation',
+          'ref': 'allPlatforms',
           'delay': 0,
           'position': null,
           'offset': -300,
           'animateAt': null
         },
         {
-          'ref': 'reportsAnimation',
+          'ref': 'automation',
           'delay': 0,
           'position': null,
           'offset': -300,
@@ -114,9 +122,13 @@ export default {
     this.isMounted = true
   },
   components: {
-    responsiveApps,
-    automateWorkflows,
-    reports,
+    Animation,
+    Speed,
+    Automation,
+    AllPlatforms,
+    // responsiveApps,
+    // automateWorkflows,
+    // reports,
     intro
   }
 }
@@ -126,16 +138,21 @@ export default {
 
   #what-i-do {
     .intro {
-      margin-top: 0;
-      margin-bottom: $main-padding-sm-y;
+      width: 100%;
+      background-color: $primary-light;
+      padding: $spacing;
+      border-radius: $default-border-radius;
+      color: $primary-dark;
+      margin-bottom: $main-padding-md-y;
       text-align: center;
+      margin-top: 0;
     }
+
     article {
       margin-bottom: $spacing * 3;
       > .animation {
         width: 70%;
-        margin: 0 auto;
-        user-select: none;
+        // margin: 0 auto;
       }
       .description {
         h2, p {
@@ -151,14 +168,6 @@ export default {
       }
     }
     @include media(">md") {
-      .intro {
-        width: 100%;
-        background-color: $primary-light;
-        padding: $spacing;
-        border-radius: $default-border-radius;
-        color: $primary-dark;
-        margin-bottom: $main-padding-md-y
-      }
       article {
         display: flex;
         flex-direction: row;

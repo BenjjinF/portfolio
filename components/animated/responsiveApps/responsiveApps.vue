@@ -46,21 +46,21 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .responsive-apps {
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    .responsive-desktop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 90%
-    }
-    .responsive-mobile {
-      position: absolute;
-      width: 30%;
-      top: 50%;
-      left: 70%;
-    }
-  }
+  // .responsive-apps {
+  //   width: 100%;
+  //   padding-top: 100%;
+  //   position: relative;
+  //   .responsive-desktop {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 90%
+  //   }
+  //   .responsive-mobile {
+  //     position: absolute;
+  //     width: 30%;
+  //     top: 50%;
+  //     left: 70%;
+  //   }
+  // }
 </style>

@@ -64,6 +64,7 @@ $border-width: .65em;
 .automated-workflows {
   width: 100%;
   padding-top: 100%;
+  width: 100%;
   position: relative;
   .anchor {
     position: absolute;

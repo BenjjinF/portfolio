@@ -31,54 +31,61 @@ $menu-height: 12%;
 $image-height: 40%;
 $spuedo-margin: 9%;
 
-.responsive-apps {
-  .responsive-mobile {
-    background-color: $white;
-    border: .25em solid $primary-dark;
-    height: 50%;
-    pointer-events: none;
-    top: 50%;
-    .menu {
-      background-color: $primary-dark;
-      height: $menu-height;
-      width: 0%;
-    }
-    .content {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100% - $menu-height - $spuedo-margin;
-      width: 100% - $spuedo-margin*2;
-      left: $spuedo-margin;
-      top: $spuedo-margin/2 + $menu-height;
-      .image {
-        background-color: $primary-light;
-        height: $image-height;
-        opacity: 0;
-      }
-      .text  {
-        background-color: $grey;
-        height: 7.5%;
-        width: 0%;
-      }
-    }
-  }
-  &.active {
+.animation {
+  .responsive-apps {
     .responsive-mobile {
+      background-color: $white;
+      border: .25em solid $primary-dark;
+      height: 50%;
+      pointer-events: none;
+      top: 50%;
       .menu {
+        background-color: $primary-dark;
+        height: $menu-height;
         width: 100%;
       }
       .content {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100% - $menu-height - $spuedo-margin;
+        width: 100% - $spuedo-margin*2;
+        left: $spuedo-margin;
+        top: $spuedo-margin/2 + $menu-height;
         .image {
+          background-color: $primary-light;
+          height: $image-height;
           opacity: 1;
         }
-        .text {
+        .text  {
+          background-color: $grey;
+          height: 7.5%;
           width: 100%;
         }
       }
     }
+    
   }
+
+  // &.active {
+    //   .responsive-mobile {
+    //     .menu {
+    //               background-color: $blue-grey-100;
+
+    //       // width: 0%;
+    //     }
+    //     .content {
+    //       .image {
+    //         opacity: 0;
+    //       }
+    //       .text {
+    //         width: 0%;
+    //       }
+    //     }
+    //   }
+    // }
 }
+
 
 </style>
