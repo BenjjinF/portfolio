@@ -13,3 +13,5 @@ dist
 credentials.js
 
 sw.*
+
+.firebase
