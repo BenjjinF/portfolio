@@ -6,7 +6,6 @@ const mailgun = require('mailgun-js')({
 
 exports.contactSubmission = functions.database.ref('contact/{id}')
   .onCreate((snap, context) => {
-    console.log()
     const submission = snap.val()
     let { name, email, message } = submission
 

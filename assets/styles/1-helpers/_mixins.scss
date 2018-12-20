@@ -11,23 +11,23 @@
   }
 }
 
-@mixin responsive-spacing($property, $key, $axis: null, $multiplier: 1) {
-    #{$property}: spacing($key, sm, $axis, $multiplier);
+@mixin responsive-spacing($property, $key, $axis: null, $multiplier: 1, $important: false) {
+    #{$property}: spacing($key, sm, $axis, $multiplier)important($important);
     @include media(">md") {
-        #{$property}: spacing($key, md, $axis, $multiplier);
+        #{$property}: spacing($key, md, $axis, $multiplier)important($important);
     }
     @include media(">lg") {
-        #{$property}: spacing($key, lg, $axis, $multiplier);
+        #{$property}: spacing($key, lg, $axis, $multiplier)important($important);
     }
 };
 
 
-@mixin responsive-value($property, $key, $multiplier: 1) {
-    #{$property}: value($key, sm, $multiplier);
+@mixin responsive-value($property, $key, $multiplier: 1, $important: false) {
+    #{$property}: value($key, sm, $multiplier)important($important);
     @include media(">md") {
-        #{$property}: value($key, md, $multiplier);
+        #{$property}: value($key, md, $multiplier)important($important);
     }
     @include media(">lg") {
-        #{$property}: value($key, lg, $multiplier);
+        #{$property}: value($key, lg, $multiplier)important($important);
     }
 };

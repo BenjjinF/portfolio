@@ -49,7 +49,7 @@ export default {
     cursor: pointer;
     svg {
       transition: color $transition-duration;
-      @include responsive-value(font-size, header-font-size);
+      @include responsive-value(font-size, nav-font-size, $important: true);
     }
     &:hover {
       svg {

@@ -31,9 +31,9 @@ export default {
         background-color: color(primary, dark);
         color: color(primary, light);
         white-space: nowrap;
-        font-size: .9em;
+        font-size: .9rem;
         @include media(">sm") {
-          font-size: 1em;
+          font-size: 1rem;
         }
       }
     }

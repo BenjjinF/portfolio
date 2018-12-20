@@ -152,7 +152,7 @@ export default {
         width: calc(100%/2);
       }
     }
-    @include media(">lg") {
+    @include media(">xl") {
       article {
         width: calc(100%/3);
       }

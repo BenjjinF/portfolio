@@ -62,3 +62,12 @@
 @function value($key, $media, $multiplier: 1) {
   @return calc(#{map-get-deep($responsive, $key, $media)} * #{$multiplier});
 }
+
+
+@function important($important: false) {
+  @if ($important) {
+    @return !important;
+  } @else {
+    @return null
+  }
+}

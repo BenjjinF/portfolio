@@ -17,7 +17,7 @@
         flex-direction: column;
         h1 {
             color: color(primary, dark);
-            font-size: 3.5em;
+            font-size: 3.5rem;
             margin: 0;
         }
         p {
