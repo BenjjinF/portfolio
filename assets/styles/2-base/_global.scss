@@ -7,8 +7,8 @@ body {
 }
 
 hr {
-  border-color: $grey;
-  border-top: 5px solid $grey;
+  border-color: color(grey);
+  border-top: 5px solid color(grey);
   margin: $spacing 0;
 
   &.hidden {

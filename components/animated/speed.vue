@@ -62,19 +62,19 @@
 <style lang="scss">
 @keyframes speedyMinutes {
   80% {
-    fill: $red;
+    fill: color(red);
   }
   100% {
-    fill: $grey;
+    fill: color(grey);
     transform: rotate(calc(4320deg + var(--initial-minute)));
   }
 }
 @keyframes speedyHours {
   80% {
-    fill: $red;
+    fill: color(red);
   }
   100% {
-    fill: $grey;
+    fill: color(grey);
     transform: rotate(calc(360deg + var(--initial-hour)));
   }
 }

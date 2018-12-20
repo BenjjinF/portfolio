@@ -51,8 +51,8 @@ $spuedo-margin: .6em;
 		.chart {
 			width: 100%;
 			height: 100%;
-			border-left: $spuedo-margin solid $primary-dark;
-			border-bottom: $spuedo-margin solid $primary-dark;
+			border-left: $spuedo-margin solid color(primary, dark);
+			border-bottom: $spuedo-margin solid color(primary, dark);
 			.triangle {
 				height: 0;
 				width: 100%;
@@ -75,7 +75,7 @@ $spuedo-margin: .6em;
 			    margin-left:-550px;
 			    border-left: 500px solid transparent;
 			    border-right: 600px solid transparent;
-			    border-bottom: 500px solid $grey;
+			    border-bottom: 500px solid color(grey);
 				}
 			}
 			.triangle.two {
@@ -86,7 +86,7 @@ $spuedo-margin: .6em;
 					margin-left:-450px;
 					border-left: 500px solid transparent;
 					border-right: 500px solid transparent;
-					border-bottom: 500px solid $primary-light;
+					border-bottom: 500px solid color(primary, light);
 				}
 			}
 

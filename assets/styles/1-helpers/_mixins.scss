@@ -1,23 +1,33 @@
-// @mixin sm {
-//   @media (max-width: #{$md-width - 1px}) {
-//     @content;
-//   }
-// }
-//
-// @mixin md {
-//   @media (min-width: #{$md-width}) and (max-width: #{$lg-width - 1px}) {
-//     @content;
-//   }
-// }
-//
-// @mixin lg {
-//   @media (min-width: #{$lg-width}) and (max-width: #{$xl-width - 1px}) {
-//     @content;
-//   }
-// }
-//
-// @mixin xl {
-//   @media (min-width: #{$xl-width}) {
-//     @content;
-//   }
-// }
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+      &:before {
+          @include pseudo($pos: relative);
+          width: 100%;
+          padding-top: $padding;
+      }
+  } @else {
+      padding-top: $padding;
+  }
+}
+
+@mixin responsive-spacing($property, $key, $axis: null, $multiplier: 1) {
+    #{$property}: spacing($key, sm, $axis, $multiplier);
+    @include media(">md") {
+        #{$property}: spacing($key, md, $axis, $multiplier);
+    }
+    @include media(">lg") {
+        #{$property}: spacing($key, lg, $axis, $multiplier);
+    }
+};
+
+
+@mixin responsive-value($property, $key, $multiplier: 1) {
+    #{$property}: value($key, sm, $multiplier);
+    @include media(">md") {
+        #{$property}: value($key, md, $multiplier);
+    }
+    @include media(">lg") {
+        #{$property}: value($key, lg, $multiplier);
+    }
+};

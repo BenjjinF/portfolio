@@ -40,12 +40,12 @@ export default {
   },
   data() {
     return {
-      imageLoaded: false,
+      'imageLoaded': false,
+      'isMounted': false,
     }
   },
   computed: {
     image() {
-      console.log(this.images)
       if (this.images) {
         return this.images[0].image
       } else {
@@ -62,16 +62,21 @@ export default {
       }
     },
     getStyle() {
-      if (this.imageLoaded || !this.lazy) {
-        return this.style
-      } else {
-        if (this.$store.state.scroll > 100) {
-          this.imageLoaded = true
+      if (process.browser && this.isMounted ) {
+        if (this.imageLoaded || !this.lazy) {
           return this.style
+        } else {
+          if (this.$store.state.windowHeight + this.$store.state.scroll > this.$el.offsetTop - 100) {
+            this.imageLoaded = true
+            return this.style
+          }
         }
       }
-    }
-  }
+    },
+  },
+  mounted() {
+    this.isMounted = true
+  },
 }
 </script>
 
@@ -82,10 +87,10 @@ export default {
     height: 15em;
     border-radius: $default-border-radius;
     overflow: hidden;
-    background-color: $primary-light;
+    background-color: color(primary, light);
     transition-duration: $transition-duration;
     &:hover {
-      background-color: $primary-bright;
+      background-color: color(primary, bright);
       .thumbnail {
         .text {
           opacity: 0;
@@ -93,16 +98,16 @@ export default {
       }
     }
     &:not(:last-child) {
-      margin-bottom: $spacing * 2;
+      @include responsive-spacing(margin-bottom, layout, y);
     }
 
     a, a:visited {
       text-decoration: none;
       h4 {
-        color: $primary-light;
+        color: color(primary, dark);
       }
       p {
-        color: $grey;
+        color: color(grey);
       }
     }
     .thumbnail {
@@ -118,7 +123,7 @@ export default {
       flex-direction: column;
       .text {
         margin: $spacing;
-        background-color: hsla(209%, 42%, 19%, .9);
+        background-color: color(primary, light, .9);
         border-radius: $default-border-radius;
         text-align: center;
         transition-duration: $transition-duration;

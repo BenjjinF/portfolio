@@ -41,7 +41,7 @@ export default {
               'width': '80%'
             },
             {
-              'name': 'Node / Express',
+              'name': 'Node',
               'width': '50%'
             }
           ]

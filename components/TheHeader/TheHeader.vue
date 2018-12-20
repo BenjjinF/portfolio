@@ -8,7 +8,6 @@
           alt="Benjamin Frost Logo"
           @click="logoClick">
         <Back v-if="showBackNav"></Back>
-        <Intro></Intro>
         <div class="contact">
           <a href="https://www.linkedin.com/in/benjamin-frost-31664631/" title="linkedin" rel="noopener" target="_blank">
             <font-awesome-icon :icon="['fab', 'linkedin']"></font-awesome-icon>
@@ -28,7 +27,6 @@
 </template>
 
 <script>
-  import Intro from '~/components/TheHeader/_intro.vue'
   import Back from '~/components/nav/back.vue'
 
   export default {
@@ -62,7 +60,6 @@
       }
     },
     components: {
-      Intro,
       Back
     }
   }
@@ -70,8 +67,8 @@
 
 <style lang="scss">
   header {
-    background-color: $primary-dark;
-    padding: $header-padding-sm;
+    background-color: color(primary, dark);
+    @include responsive-spacing(padding, layout, x);
     position: fixed;
     width: 100%;
     top: 0;
@@ -80,15 +77,12 @@
     .content {
       display: flex;
       .logo {
-        height: $header-logo-height-sm;
+        height: map-get-deep($responsive, logo-size, sm);
         width: auto;
         cursor: pointer;
         &.hide {
           display: none;
         }
-      }
-      .intro {
-        display: none;
       }
       .ie-contact {
         display: none;
@@ -100,21 +94,21 @@
         align-items: center;
         margin-left: auto;
         a {
-          color: $primary-light;
+          color: color(primary, light);
           &:visited {
-            color: $primary-light;
+            color: color(primary, light);
           }
           &:hover, &.nuxt-link-active {
             svg {
-              color: $primary-bright;
+              color: color(primary, bright);
             }
           }
           svg {
-            font-size: $header-font-size-sm;
+            @include responsive-value(font-size, header-font-size);
             transition-duration: $transition-duration;
-            color: $primary-light;
+            color: color(primary, light);
             &:visited {
-              color: $primary-light;
+              color: color(primary, light);
             }
           }
           &:not(:last-child) {
@@ -126,8 +120,7 @@
     @include media(">md") {
       left: 0;
       height: 100%;
-      width: $header-width-md;
-      padding: $header-padding-md;
+      width: header-width(md);
       .content {
         height: 100%;
         flex-direction: column;
@@ -136,7 +129,7 @@
           display: none;
         }
         .logo {
-          width: $header-logo-width-md;
+          width: map-get-deep($responsive, logo-size, md);
           height: auto;
           &.hide {
             display: block;
@@ -152,38 +145,6 @@
             &:not(:last-child) {
               margin-right: 0;
               margin-bottom: $spacing/1.5;
-            }
-            svg {
-              font-size: $header-font-size-md;
-            }
-          }
-        }
-      }
-    }
-    @include media(">lg") {
-      padding: $header-padding-lg;
-      width: $header-width-lg;
-      .content {
-        .logo {
-          width: $header-logo-width-lg;
-          height: auto;
-          margin-bottom: $spacing * 2;
-        }
-        .intro {
-          display: block;
-          width: $header-logo-width-lg;
-          color: $primary-light;
-        }
-        .contact {
-          justify-content: space-between;
-          width: 100%;
-          flex-direction: row;
-          a {
-            &:not(:last-child) {
-              margin: 0;
-            }
-            svg {
-              font-size: $header-font-size-lg;
             }
           }
         }

@@ -22,14 +22,14 @@ export default {
   .skillset {
     .skill-bar {
       margin: $spacing/2 0;
-      background-color: $columbia-blue;
+      background-color: color(primary, light);
       border-radius: $default-border-radius;
       overflow: hidden;
       .skill {
         transition-duration: $transition-duration;
         padding: $spacing/2;
-        background-color: $primary-dark;
-        color: $primary-light;
+        background-color: color(primary, dark);
+        color: color(primary, light);
         white-space: nowrap;
         font-size: .9em;
         @include media(">sm") {

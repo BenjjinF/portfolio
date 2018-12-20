@@ -22,7 +22,8 @@
     "nuxt": "^1.4.2",
     "raven-js": "^3.26.4",
     "storyblok-nuxt": "0.0.6",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-mq": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.2",

@@ -74,7 +74,8 @@ export default {
 
   #contact-form {
     > * {
-      margin: $spacing/2 0;
+      @include responsive-spacing(margin-top, layout, y, .25);
+      @include responsive-spacing(margin-bottom, layout, y, .25);
     }
     input, textarea {
       transition: $transition-duration;
@@ -82,27 +83,27 @@ export default {
       padding: $spacing / 2;
       border-radius: $default-border-radius;
       width: 100%;
-      box-shadow: 0 0 0 1pt $grey;
+      box-shadow: 0 0 0 1pt color(grey);
       -webkit-appearance: none; // box shadow doesn't show up on mobile
-      color: $grey;
+      color: color(grey);
       border: none;
       box-sizing: border-box;
       overflow:visible;
 
       &::placeholder {
-        color: $grey;
+        color: color(grey);
       }
       &:focus {
         outline: 0;
-        box-shadow: 0 0 0 2pt $primary-bright;
-        color: $primary-bright;
+        box-shadow: 0 0 0 2pt color(primary, bright);
+        color: color(primary, bright);
       }
       &.error {
-        background-color: lighten($red, 35%);
-        box-shadow: 0 0 0 2pt $red;
-        color: $red;
+        background-color: lighten(color(red), 35%);
+        box-shadow: 0 0 0 2pt color(red);
+        color: color(red);
         &::placeholder {
-          color: $red;
+          color: color(red);
         }
       }
     }

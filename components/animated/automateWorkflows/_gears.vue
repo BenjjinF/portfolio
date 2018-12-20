@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$gear-color: $grey;
+$gear-color: color(grey);
 $gear-root-size: 27%;
 $gear-center: 65%;
 $tooth-width: 20%;

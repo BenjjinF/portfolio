@@ -1,13 +1,10 @@
 <template lang="html">
   <div class="page page-contact">
     <section>
-      <h1><span class="underline">Contact</span></h1>
+      <h1 :class="{submitted: submitted}"><span class="underline">Contact</span></h1>
       <transition name="fade" mode="out-in">
           <component :is="contactComponent"></component>
       </transition>
-      <!-- <button class="button" type="button" name="button"
-          @click="alternate">alternate</button>
-      </button> -->
     </section>
   </div>
 </template>
@@ -17,11 +14,6 @@ import Form from '~/components/contact/form.vue'
 import ThankYou from '~/components/contact/thankYou.vue'
 
 export default {
-  // methods: {
-  //   alternate() {
-  //     this.$store.state.contactFormSubmitted = !this.$store.state.contactFormSubmitted
-  //   }
-  // },
   computed: {
     submitted() {
       return this.$store.state.contactFormSubmitted
@@ -42,7 +34,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .page-contact {
+    h1 {
+      transition-duration: $transition-duration;
+      &.submitted {
+        opacity: 0;
+      }
+    }
+  }
   .fade-enter {
     opacity: 0;
   }

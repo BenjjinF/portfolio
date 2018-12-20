@@ -16,12 +16,12 @@
 
         flex-direction: column;
         h1 {
-            color: $primary-dark;
+            color: color(primary, dark);
             font-size: 3.5em;
             margin: 0;
         }
         p {
-            color: $grey;
+            color: color(grey);
         }
     }
 </style>

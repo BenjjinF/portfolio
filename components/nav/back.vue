@@ -44,34 +44,34 @@ export default {
 <style lang="scss">
 
   nav {
-    color: $primary-light;
+    color: color(primary, light);
     z-index: 1000;
+    cursor: pointer;
     svg {
       transition: color $transition-duration;
-      font-size: 2em !important;
+      @include responsive-value(font-size, header-font-size);
     }
     &:hover {
       svg {
-        color: $primary-bright;
+        color: color(primary, bright);
       }
     }
     @include media(">md") {
-      background-color: hsla(100, 100, 100, .85);
+      background-color: color($color-name: white, $alpha: .85);
       border-radius: 0 $default-border-radius $default-border-radius 0;
-      color: $grey;
-      cursor: pointer;
-      left: $header-width-md + $main-padding-md-x;
+      color: color(grey);
+      left: calc(#{header-width(md)} + #{spacing(layout, md, x)});
       padding: $spacing $spacing/2 $spacing 0;
       position: fixed;
-      top: $main-padding-md-y;
+      top: spacing(layout, md, y);
 
       svg.fa-spinner {
-        color: $primary-bright;
+        color: color(primary, bright);
       }
     }
     @include media(">lg") {
-      left: $header-width-lg + $main-padding-lg-x;
-      top: $main-padding-lg-y;
+      left: calc(#{header-width(lg)} + #{spacing(layout, lg, x)});
+      top: spacing(layout, lg, y);
     }
   }
   @include media("<md") {

@@ -21,16 +21,23 @@ export default {
         this.$store.state.scroll = window.scrollY;
       }
     },
+    handleResize () {
+      if (process.browser) {
+        this.$store.state.windowHeight = window.innerHeight;
+      }
+    }
   },
   mounted () {
     if (process.browser) {
-
       window.addEventListener('scroll', this.handleScroll)
+      window.addEventListener("resize", this.handleResize);
+      this.$store.state.windowHeight = window.innerHeight;
     }
   },
   beforeDestroy () {
     if (process.browser) {
       window.removeEventListener('scroll', this.handleScroll)
+      window.removeEventListener("resize", this.handleResize);
     }
   },
   components: {
@@ -46,59 +53,38 @@ export default {
 .wrapper {
   width: 100%;
   .main {
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
     max-width: 1200px;
-    margin-top: $header-height-sm;
-    padding: $main-padding-sm;
+    margin-top: header-height(sm);
+    @include responsive-spacing(padding, layout, x);
     .page {
-      min-height: calc(100vh - #{$main-padding-sm-y}*3 - #{$header-height-sm}- 1.4em);
+      min-height: calc(100vh - #{spacing(layout, sm, y)} * 3 - #{footer-height(sm)});
       section {
         &:not(:last-child) {
-          margin-bottom: $main-padding-sm-y;
+          @include responsive-spacing(margin-bottom, main, y);
         }
         h1 {
-          margin-bottom: $main-padding-sm-y/2;
+          @include responsive-spacing(margin-bottom, main, y);
+          width: 100%;
         }
         .spacer {
-          height: $main-padding-sm-y;
+          @include responsive-spacing(margin-bottom, main, y);
         }
       }
     }
-    
-  }
-  @include media(">md") {
-    .main {
+    @include media(">md") {
       margin-top: 0;
-      padding: $main-padding-md;
-      padding-left: $main-padding-md-x + $header-width-md;
+      padding-left: calc(#{spacing(layout, md, x)} + #{header-width(md)});
       .page {
-        min-height: calc(100vh - #{$main-padding-md-y}*3 - 1.4em);
-        section {
-          &:not(:last-child) {
-            margin-bottom: $main-padding-md-y;
-          }
-          h1 {
-            margin-bottom: $main-padding-md-y * .75;
-            width: 100%;
-          }
-        }
+        min-height: calc(100vh - #{footer-height(md)});
       }
     }
-  }
-  @include media(">lg") {
-    .main {
-      padding: $main-padding-lg;
-      padding-left: $main-padding-lg-x + $header-width-lg;
+    @include media(">lg") {
+      padding-left: calc(#{spacing(layout, lg, x)} + #{header-width(lg)});
       .page {
-        min-height: calc(100vh - #{$main-padding-lg-y}*3 - 1.4em);
-        section {
-          h1 {
-            margin-bottom: $main-padding-lg-y - $spacing * 2;
-          }
-          &:not(:last-child) {
-            margin-bottom: $main-padding-lg-y;
-          }
-        }
+        min-height: calc(100vh - #{footer-height(lg)});
       }
     }
   }

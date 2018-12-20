@@ -1,4 +1,64 @@
+// Colors
+
+@function color-get($color-name, $color-variant) {
+   @if (type-of(map-get($colors, $color-name)) == "map") {
+     @return map-get(map-get($colors, $color-name), $color-variant);
+   } @else {
+     @return map-get($colors, $color-name);
+   }
+ };
+ 
+ @function color($color-name, $color-variant: null, $alpha: 1) {
+   @return rgba(color-get($color-name, $color-variant), $alpha);
+ };
+ 
+// Spacing
+
+@function spacing($key, $media, $axis: null, $multiplier: 1) {
+  @if ($axis) {
+    @return calc(#{map-get-deep($responsive, $key, $media, $axis)} * #{$multiplier});
+  } @else {
+    @return calc(#{map-get-deep($responsive, $key, $media, y)} * #{$multiplier}) calc(#{map-get-deep($responsive, $key, $media, x)} * #{$multiplier});
+  }
+}
+
+@function header-height($media) {
+  @if ($media == "sm") {
+    @return calc(#{map-get-deep($responsive, layout, $media, x)} * 2 + #{map-get-deep($responsive, logo-size, $media)});
+  } @else {
+    @return 100vh;
+  }
+}
+
+@function header-width($media) {
+  @if ($media == "sm") {
+    @return 100vw;
+  } @else {
+    @return calc(#{map-get-deep($responsive, layout, $media, x)} * 2 + #{map-get-deep($responsive, logo-size, $media)});
+  }
+}
+
+@function footer-height($media) {
+  @return calc(#{spacing(layout, $media, y)} + 1.4rem);
+}
+
+// Conversions
+
 @function em2px($target, $context: $base-font-size-em) {
    @if $target == 0 { @return 0 }
    @return ($target / 1em) * ($context / 1em) * 16 + 0px;
+}
+
+
+// Utils
+
+@function map-get-deep($map, $keys...) {
+  @each $key in $keys {
+      $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+@function value($key, $media, $multiplier: 1) {
+  @return calc(#{map-get-deep($responsive, $key, $media)} * #{$multiplier});
 }

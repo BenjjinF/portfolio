@@ -52,6 +52,10 @@ module.exports = {
       ssr: true
     },
     {
+      src: '~plugins/mq',
+      ssr: false
+    },
+    {
       src: '~plugins/nav',
       ssr: false
     },

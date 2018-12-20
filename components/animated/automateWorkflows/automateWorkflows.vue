@@ -77,18 +77,18 @@ $border-width: .65em;
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: $border-width solid $primary-dark;
+      border: $border-width solid color(primary, dark);
       box-sizing: border-box;
       .point {
         position: absolute;
         border-radius: 50%;
         height: $point-size;
         width: $point-size;
-        border: .5em solid $primary-dark;
-        background: $primary-dark;
+        border: .5em solid color(primary, dark);
+        background: color(primary, dark);
         transition-duration: $transition-duration / 2;
         &.active {
-          background: $primary-light;
+          background: color(primary, light);
         }
         &.one {
           top: -$point-size/2.7;

@@ -149,14 +149,14 @@ $content-width-s: 100%;
 
 .animation {
   .all-platforms {
-    background-color: $white;
-    border: .25em solid $primary-dark;
+    background-color: color(white);
+    border: .25em solid color(primary, dark);
     height: 100%;
     position: relative;
     margin: auto;
     .menu {
       position: abolute;
-      background-color: $primary-dark;
+      background-color: color(primary, dark);
       height: $menu-height-l;
       width: $menu-width-l;
       left: 0;
@@ -172,11 +172,11 @@ $content-width-s: 100%;
       height: $content-height-l;
       width: $content-width-l;
       .image {
-        background-color: $primary-light;
+        background-color: color(primary, light);
         flex-grow: .435;
       }
       .text {
-        background-color: $grey;
+        background-color: color(grey);
         flex-grow: .075;
         width: 100%;
       }

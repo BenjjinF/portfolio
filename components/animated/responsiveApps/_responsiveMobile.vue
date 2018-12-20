@@ -34,13 +34,13 @@ $spuedo-margin: 9%;
 .animation {
   .responsive-apps {
     .responsive-mobile {
-      background-color: $white;
-      border: .25em solid $primary-dark;
+      background-color: color(white);
+      border: .25em solid color(primary, dark);
       height: 50%;
       pointer-events: none;
       top: 50%;
       .menu {
-        background-color: $primary-dark;
+        background-color: color(primary, dark);
         height: $menu-height;
         width: 100%;
       }
@@ -54,12 +54,12 @@ $spuedo-margin: 9%;
         left: $spuedo-margin;
         top: $spuedo-margin/2 + $menu-height;
         .image {
-          background-color: $primary-light;
+          background-color: color(primary, light);
           height: $image-height;
           opacity: 1;
         }
         .text  {
-          background-color: $grey;
+          background-color: color(grey);
           height: 7.5%;
           width: 100%;
         }
@@ -71,7 +71,7 @@ $spuedo-margin: 9%;
   // &.active {
     //   .responsive-mobile {
     //     .menu {
-    //               background-color: $blue-grey-100;
+    //               background-color: color(blue-grey, 100);
 
     //       // width: 0%;
     //     }

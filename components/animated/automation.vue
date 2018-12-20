@@ -91,47 +91,47 @@
 
         @keyframes light-one {
           10% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
 
           30% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
 
           40% {
-            fill: $primary-dark;
+            fill: color(primary, dark);
           }
         }
         @keyframes light-two {
           30% {
-            fill: $primary-dark;
+            fill: color(primary, dark);
           }
 
           40% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
 
           60% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
           70% {
-            fill: $primary-dark;
+            fill: color(primary, dark);
           }
         }
         @keyframes light-three {
           60% {
-            fill: $primary-dark;
+            fill: color(primary, dark);
           }
 
           70% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
 
           90% {
-            fill: $primary-light;
+            fill: color(primary, light);
           }
           100% {
-            fill: $primary-dark;
+            fill: color(primary, dark);
           }
         }
         .point {

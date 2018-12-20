@@ -63,25 +63,23 @@ export default {
   width: 100%;
   .images {
     position: relative;
-    margin-bottom: $spacing;
+    @include responsive-spacing(margin-bottom, main, y, .75);
     .image {
       border-radius: $default-border-radius;
-      background-color: $primary-light;
-      border: 1px solid $blue-grey-50;
+      background-color: color(primary, light);
+      border: 1px solid color(blue-grey, 50);
       width: 100%;
-      margin-bottom: $spacing;
-      @include media(">md") {
-        &.desktop {
-          width: 90%;
-        }
-        &.mobile {
-          position: absolute;
-          height: 75%;
-          width: auto;
-          bottom: 0%;
-          right: 0;
-          margin-bottom: 5px;
-        }
+      @include responsive-spacing(margin-bottom, main, y, .25);
+      &.desktop {
+        width: 90%;
+      }
+      &.mobile {
+        position: absolute;
+        height: 75%;
+        width: auto;
+        bottom: 0%;
+        right: 0;
+        margin-bottom: 5px;
       }
     }
   }
@@ -90,25 +88,26 @@ export default {
       margin-top: 0;
     }
     > *:not(:last-child) {
-      margin-bottom: $spacing * 2;
+      @include responsive-spacing(margin-bottom, main, y, .75);
     }
     h3 {
-      margin-bottom: $spacing/2;
+      @include responsive-spacing(margin-bottom, main, y, .25);
     }
     ul {
       padding: 0;
       margin: 0;
       li {
         list-style-type: none;
-        padding: $spacing/2;
+        @include responsive-spacing(padding, main, null, .15);
         &:not(:last-child) {
-          border-bottom: 1px solid $primary-light;
+          border-bottom: 1px solid color(primary, light);
         }
       }
     }
   }
   .button {
-    margin: $spacing * 2 0;
+    @include responsive-spacing(margin-top, main, y, .75);
+    @include responsive-spacing(margin-bottom, main, y, .75);
   }
 }
 </style>
